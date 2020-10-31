@@ -1,9 +1,0 @@
-package com.lixuan.IO;
-
-public class Deom2_FileOutputStream {
-
-	public static void main(String[] args) {
-
-	}
-
-}

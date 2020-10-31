@@ -1,9 +1,0 @@
-package com.lixuan.io;
-
-public class Deom3_Exception {
-
-	public static void main(String[] args) {
-
-	}
-
-}
