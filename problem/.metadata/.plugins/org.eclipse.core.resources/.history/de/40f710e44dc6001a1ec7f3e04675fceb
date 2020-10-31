@@ -1,0 +1,39 @@
+package com.lixuan.charIo;
+
+public class Deom6_wrap {
+
+	public static void main(String[] args) {
+		HeiMaStudent hms = new HeiMaStudent(new Student());
+		hms.code();
+	}
+
+}
+
+interface coder{
+	public void code();
+}
+
+class Student implements coder{
+
+	@Override
+	public void code() {
+		System.out.println("javase");
+		System.out.println("javaweb");
+	}
+	
+}
+
+class HeiMaStudent implements coder {
+	private Student s;
+	public HeiMaStudent (Student s) {
+		this.s=s;
+	}
+	
+	public void code() {
+		s.code();
+		System.out.println("ssh");
+		System.out.println("Êý¾Ý¿â");
+		System.out.println("...");
+	}
+	
+}

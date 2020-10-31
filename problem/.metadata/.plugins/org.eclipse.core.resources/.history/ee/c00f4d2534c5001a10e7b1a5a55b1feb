@@ -1,0 +1,9 @@
+package com.lixuan.IO;
+
+public class Deom1_FileInputStream {
+
+	public static void main(String[] args) {
+
+	}
+
+}

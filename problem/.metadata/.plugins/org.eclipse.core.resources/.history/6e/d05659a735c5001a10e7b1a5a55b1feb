@@ -1,0 +1,23 @@
+package com.lixuan.IO;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class Deom1_FileInputStream {
+
+	public static void main(String[] args) throws IOException {
+		deom1();
+	}
+
+	public static void deom1() throws FileNotFoundException, IOException {
+		FileInputStream fis = new FileInputStream("xxx.txt");
+		int x = fis.read();
+		System.out.println(x);
+		
+		int y = fis.read();
+		System.out.println(y);
+		fis.close();
+	}
+
+}

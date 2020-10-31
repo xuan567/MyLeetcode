@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;public static void deom1() throws FileNotFoundException, IOException &apos; from &apos;com.lixuan.othersIO.Deom1.main()&apos; to &apos;com.lixuan.othersIO.Deom1&apos;&#x0D;&#x0A;- Original project: &apos;day22&apos;&#x0D;&#x0A;- Method name: &apos;deom1&apos;&#x0D;&#x0A;- Destination type: &apos;com.lixuan.othersIO.Deom1&apos;&#x0D;&#x0A;- Declared visibility: &apos;public&apos;" comments="false" description="Extract method &apos;deom1&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;com.lixuan.othersIO{Deom1.java" name="deom1" replace="false" selection="255 357" stamp="1594884037555" version="1.0" visibility="1"/>
+</session>

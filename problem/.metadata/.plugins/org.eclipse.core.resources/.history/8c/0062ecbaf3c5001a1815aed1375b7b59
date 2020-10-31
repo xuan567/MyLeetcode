@@ -1,0 +1,9 @@
+package com.lixuan.charIo;
+
+public class Deom1_FileReader {
+
+	public static void main(String[] args) {
+
+	}
+
+}

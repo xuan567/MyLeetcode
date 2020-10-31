@@ -1,0 +1,13 @@
+package com.lixuan.File;
+
+import java.io.File;
+
+public class Deom_fileMethod {
+
+	public static void main(String[] args) {
+		File f1 = new File("zzz");
+		System.out.println(f1.createNewFile());
+
+	}
+
+}

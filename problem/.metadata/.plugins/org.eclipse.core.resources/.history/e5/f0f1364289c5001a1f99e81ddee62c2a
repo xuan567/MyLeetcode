@@ -1,0 +1,9 @@
+package com.lixuan.File;
+
+public class Deom_fileMethod {
+
+	public static void main(String[] args) {
+
+	}
+
+}

@@ -1,0 +1,34 @@
+package com.lixuan.list;
+
+import java.util.ArrayList;
+
+import com.lixuan.bean.Preson;
+
+public class Deom8_foreach {
+
+	public static void main(String[] args) {
+		//deom();
+		ArrayList<Preson> list = new ArrayList<>();
+		list.add(new Preson("张三",23));
+		list.add(new Preson("李四",24));
+		list.add(new Preson("王五",25));
+		for (Preson preson : list) {
+			System.out.println(preson);
+		}
+	}
+
+	public static void deom() {
+		int[] arr = {11,22,33,44};
+		for (int i : arr) {
+			System.out.println(i);
+		}
+		ArrayList<String> list = new ArrayList<>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		for (String string : list) {
+			System.out.println(string);
+		}
+	}
+
+}
