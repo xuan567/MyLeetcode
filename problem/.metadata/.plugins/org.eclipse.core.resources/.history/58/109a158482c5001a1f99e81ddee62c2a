@@ -1,0 +1,30 @@
+package com.lixuan.io;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Test1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入一个整数");
+		while(true) {
+			String s = sc.nextLine();
+			try {
+				int num = Integer.parseInt(s);
+				System.out.println(Integer.toBinaryString(num));
+				break;
+			}catch(Exception e) {
+				try {
+					new BigInteger(s);
+					System.out.println("录入错误，数据过大");
+				}catch(Exception e2) {
+					new BigDecimal(s);
+					System.out.println("录入错误，录入的是小数");
+				}
+			}
+		}
+	}
+
+}

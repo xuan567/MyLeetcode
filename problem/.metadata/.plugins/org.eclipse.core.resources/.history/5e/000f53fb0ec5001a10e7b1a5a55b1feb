@@ -1,0 +1,9 @@
+package com.lixuan.collections;
+
+public class Test_shuffer {
+
+	public static void main(String[] args) {
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.lixuan.io;
+
+public class Deom1_jvm {
+
+	public static void main(String[] args) {
+
+	}
+
+}
