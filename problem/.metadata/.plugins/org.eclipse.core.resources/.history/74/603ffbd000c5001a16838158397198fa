@@ -1,9 +1,0 @@
-package com.lixuan.map;
-
-public class Deom3_linkedHashMap {
-
-	public static void main(String[] args) {
-
-	}
-
-}

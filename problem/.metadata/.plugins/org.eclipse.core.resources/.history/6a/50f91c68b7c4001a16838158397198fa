@@ -1,9 +1,0 @@
-package com.lixuan.set;
-
-public class Deom2_LinkedHashSet {
-
-	public static void main(String[] args) {
-
-	}
-
-}

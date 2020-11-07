@@ -1,9 +1,0 @@
-package com.lixuan.charIo;
-
-public class Deom2_FileWrite {
-
-	public static void main(String[] args) {
-
-	}
-
-}
