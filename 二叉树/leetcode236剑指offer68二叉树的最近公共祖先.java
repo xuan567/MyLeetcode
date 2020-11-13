@@ -17,7 +17,7 @@ public class leetcode236剑指offer68二叉树的最近公共祖先 {
         }
         TreeNode left = lowestCommonAncestor(root.left,p,q);
         TreeNode right = lowestCommonAncestor(root.right,p,q);
-        if(left==null && right == null){
+        if(left == null && right==null ){
             return null;
         }
         if(left==null){
@@ -26,7 +26,9 @@ public class leetcode236剑指offer68二叉树的最近公共祖先 {
         if(right==null){
             return left;
         }
+
         return root;
+
     }
 
 }
