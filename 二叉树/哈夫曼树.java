@@ -1,9 +1,6 @@
 package 二叉树;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 public class 哈夫曼树 {
 
@@ -77,15 +74,37 @@ public class 哈夫曼树 {
     }
     public static void main(String[] args){
         TreeMap<Integer,Character> test = new TreeMap<>();
-        test.put(3,'f');
-        test.put(4,'e');
-        test.put(10,'c');
-        test.put(8,'b');
-        test.put(6,'d');
-        test.put(5,'a');
+        test.put(3,'A');
+        test.put(4,'B');
+        test.put(10,'C');
+        test.put(8,'D');
+        test.put(6,'E');
+        test.put(5,'F');
 
         TreeNode root = huffman(test);
         code(root);
         print(root);
+
+        System.out.println("输入字符串");
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        printCode(s,test);
+    }
+
+    public static void printCode(String s,TreeMap<Integer,Character> data){
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            TreeSet<TreeNode> tNodes = new TreeSet<>();
+            Set<Integer> weights = data.keySet();
+            Iterator<Integer> iterator = weights.iterator();
+            while(iterator.hasNext()){
+                int weight = iterator.next();
+                TreeNode tmp = new TreeNode(weight,null,null);
+                tmp.ch = data.get(weight);
+                tNodes.add(tmp);
+            }
+        }
+
     }
 }
