@@ -14,7 +14,7 @@ public class leetcode5最长回文子串 {
 
     public static void main(String[] args) {
         String s = "cbbd";
-        String s2 = longestPalindrome1(s);
+        String s2 = longestPalindrome3(s);
         System.out.println(s2);
     }
     //暴力
@@ -43,6 +43,61 @@ public class leetcode5最长回文子串 {
         return true;
     }
 
-    //
+    //动态规划
+    //对于一个子串，是回文串，并且长度大于2，将他的首位两个字母去除之后，仍然是回文串，所有动态规划转移方程为
+    //p(i,j) = p(i+1,j-1)&&(Si == Sj)
+
+    public static String longestPalindrome2(String s){
+        int n = s.length();
+        String ans = "";
+        boolean[][] dp = new boolean[n][n];
+        for(int l=0;l<n;l++){
+            for(int i=0;i+l<n;i++){
+                int j = i+l;
+                if(l==0){
+                    dp[i][j]=true;
+                }else if(l==1){
+                    dp[i][j]=(s.charAt(i) == s.charAt(j));
+                }else{
+                    dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i+1][j-1]);
+                }
+                if(dp[i][j] && l+1 > ans.length()){
+                    ans = s.substring(i,i+l+1);
+                }
+            }
+        }
+        return ans;
+    }
+
+    //中心扩散法
+    //回文串的中心可能是一个字母，也可能是两个字母，将两种情况都列举出来，不断向两边扩展，
+    //如果两边的字母相同，就可以继续扩展，不同，就返回长度，最后求出最长的长度
+    //时间复杂度是O(n2),空间复杂度是O(1)
+    //其中 nn 是字符串的长度。长度为1和2的回文中心分别有n和n−1个,每个回文中心最多会向外扩展O(n)次
+
+    public static String longestPalindrome3(String s){
+        if(s.length()<1 || s==null){
+            return "";
+        }
+        int end=0,start=0;
+        for(int i=0;i<s.length();i++){
+            int len1 = expandAroundCenter(s,i,i);
+            int len2 = expandAroundCenter(s,i,i+1);
+            int len = Math.max(len1,len2);
+            if(len>end-start){
+                start = i-(len-1)/2;
+                end = i+len/2;
+            }
+        }
+        return s.substring(start,end+1);
+    }
+
+    public static int expandAroundCenter(String s,int left,int right){
+        while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right-left-1;
+    }
 
 }
