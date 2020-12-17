@@ -3,7 +3,7 @@ package 数组和字符串;
 import java.util.ArrayList;
 import java.util.List;
 
-public class leetcode面试题零矩阵 {
+public class leetcode面试题0108零矩阵 {
     /*
     * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
         示例 1：
