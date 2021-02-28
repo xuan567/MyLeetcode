@@ -72,8 +72,8 @@ public class leetcode5最长回文子串 {
     //中心扩散法
     //回文串的中心可能是一个字母，也可能是两个字母，将两种情况都列举出来，不断向两边扩展，
     //如果两边的字母相同，就可以继续扩展，不同，就返回长度，最后求出最长的长度
-    //时间复杂度是O(n2),空间复杂度是O(1)
-    //其中 nn 是字符串的长度。长度为1和2的回文中心分别有n和n−1个,每个回文中心最多会向外扩展O(n)次
+    //时间复杂度是O(n方),空间复杂度是O(1)
+    //其中n是字符串的长度。长度为1和2的回文中心分别有n和n−1个,每个回文中心最多会向外扩展O(n)次
 
     public static String longestPalindrome3(String s){
         if(s.length()<1 || s==null){
@@ -98,6 +98,39 @@ public class leetcode5最长回文子串 {
             right++;
         }
         return right-left-1;
+    }
+
+
+
+
+
+
+    public String longestPalindrome(String s) {
+        if(s==null || s.length()==0){
+            return "";
+        }
+        int start=0,end=0,max=0,len=0;
+        String l="" ;
+        for(int i=0;i+1<s.length();i++){
+            int l1 = aroundCenter(s,i,i);
+            int l2 = aroundCenter(s,i,i+1);
+            len = Math.max(l1,l2);
+            start = i-(len-1)/2;
+            end = i+len/2;
+            if(len > max){
+                l = s.substring(start,end+1);
+            }
+        }
+        return l;
+
+    }
+
+    private int aroundCenter(String s,int left,int right){
+        while(s.charAt(left)==s.charAt(right) && left>=0 && right<s.length()){
+            left--;
+            right++;
+        }
+        return left-right-1;
     }
 
 }

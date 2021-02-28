@@ -1,5 +1,8 @@
 package 数组和字符串;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class leetcode26删除排序数组中的重复项 {
     /*
     * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -17,8 +20,10 @@ public class leetcode26删除排序数组中的重复项 {
 
     public static void main(String[] args) {
         int[] nums = {0,0,1,1,1,2,2,3,3,4};
-        int x = removeDuplicates1(nums);
-        System.out.println(x);
+        nums = removeDuplicates3(nums);
+        for(int i=0;i<nums.length;i++){
+            System.out.print(nums[i]+" ");
+        }
     }
     public static int removeDuplicates1(int[] nums) {
         int index=0;
@@ -50,4 +55,21 @@ public class leetcode26删除排序数组中的重复项 {
         }
         return i+1;
     }
+
+    public static int[] removeDuplicates3(int[] nums){
+        if(nums.length==0 || nums==null){
+            return null;
+        }
+        int i=0,j;
+        for(j=1;j<nums.length;j++){
+            if(nums[i]!=nums[j]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return Arrays.copyOf(nums,i+1);
+    }
+    //遍历这个数组，因为是非递减的顺序表，下标i记录，j遍历，i=0，j=1，当nums[i]!=nums[j]，i++，j++，
+    //当nums[i]==nums[j]时，i不变，j++，这样重复的元素不会被记录，最后返回Arrays.copyOf(nums,i+1)，
+    //返回新数组的前i+1个元素，时间复杂度时O(n),空间复杂度是O(1);
 }

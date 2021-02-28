@@ -25,4 +25,7 @@ public class leetcode144二叉树的前序遍历 {
         }
         return list;
     }
+
+    int s=0;
+
 }
