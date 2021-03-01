@@ -18,7 +18,6 @@ public class leetcode2两数相加 {
       示例 3：
       输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
       输出：[8,9,9,9,0,0,0,1]
-
      * */
 
     public static class ListNode{
