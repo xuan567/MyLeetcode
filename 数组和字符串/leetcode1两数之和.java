@@ -18,7 +18,6 @@ public class leetcode1两数之和 {
     输入：nums = [3,2,4], target = 6
     输出：[1,2]
      */
-
     //方法1:暴力,时间复杂度O(n)，空间复杂度O(1)
 
     public int[] twoSum1(int[] nums, int target){
