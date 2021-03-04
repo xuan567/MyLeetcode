@@ -2,6 +2,8 @@ package 数组和字符串;
 
 import jdk.swing.interop.SwingInterOpUtils;
 
+import java.util.Arrays;
+
 public class leetcode8字符串转换整数 {
     /*
     * 请你来实现一个myAtoi(string s)函数，使其能将字符串转换成一个 32 位有符号整数（类似 C/C++ 中的 atoi 函数）。
@@ -83,8 +85,14 @@ public class leetcode8字符串转换整数 {
         由于 -91283472332 小于范围 [-231, 231 - 1] 的下界，最终结果被截断为 -231 = -2147483648 。*/
 
 
+    //题解：将字符串转换成字符数组，从下标0开始，先排除空格，知道遇到第一个不是空格的字符，
+    //如果该字符是‘-’，boolean b = true，如果为‘+’，b=false，为之后的返回值做标记
+    //如果上面两个都不是，则返回0。定义int ans = 0，此时该字符是数字，将字符转换成整数
+    //用ans > (Integer.MAX_VALUE - digit)/10判断是否越界，越界的话就根据b的值返回
+    //最大值或最小值，将字符都转化成数字后，再根据b的值返回ans或-ans
+
     public static void main(String[] args) {
-        int x = myAtoi("  -42");
+        int x = myAtoi("  +1");
         System.out.println(x);
     }
 
@@ -95,20 +103,20 @@ public class leetcode8字符串转换整数 {
         while(index < n && array[index]==' '){
             index++;
         }
-        if(index==n)
+        if(index==n) {
             return 0;
+        }
         boolean b = false;
         if(array[index]=='-'){
             index++;
             b= true;
-        }
-        else if(array[index]=='+'){
+        }else if(array[index]=='+'){
             index++;
-        }
-        else if(!Character.isDigit(array[index]))
+        }else if(!Character.isDigit(array[index])) {
             return 0;
+        }
         int ans = 0;
-        while(index < n&&Character.isDigit(array[index])){
+        while(index < n && Character.isDigit(array[index])){
             int digit = array[index]-'0';
             if(ans > (Integer.MAX_VALUE - digit)/10){
                 return b?Integer.MIN_VALUE:Integer.MAX_VALUE;
@@ -117,60 +125,5 @@ public class leetcode8字符串转换整数 {
             index++;
         }
         return b?-ans:ans;
-    }
-
-    public static int myAtoi1(String s) {
-        if(s==null||s.length()==0||s.equals("-")){
-            return 0;
-        }
-        s = s.trim();
-        char c = s.charAt(0);
-        boolean flag = false;
-        if(!Character.isDigit(c)){
-            if(c=='-'){
-
-            }else if(c=='+'){
-
-            }else {
-                return 0;
-            }
-        }
-        if(c=='-'){
-            char c1 = s.charAt(1);
-            if(!Character.isDigit(c1)){
-                return 0;
-            }else if(Character.isDigit(c1)){
-                flag = true;
-            }
-        }
-
-        StringBuilder sb = new StringBuilder();
-        int i=0;
-        if(c=='-'){
-            i=1;
-        }
-        for(;i<s.length() && Character.isDigit(s.charAt(i));i++){
-            sb.append(s.charAt(i));
-        }
-        String l = sb.toString();
-
-        int ans = 0;
-        for(int j =0;j<l.length();j++){
-            int pop = l.charAt(j)-'0';
-            if(flag==false && ( ans>(Integer.MAX_VALUE/10) || ans==Integer.MAX_VALUE/10 && pop>7)){
-                return Integer.MAX_VALUE;
-            }
-
-            if(flag==true && ( ans>(Integer.MAX_VALUE/10) || ans==Integer.MAX_VALUE/10 && pop>8)){
-                return Integer.MIN_VALUE;
-            }
-
-            ans = ans*10+pop;
-        }
-        if(flag == false){
-            return ans;
-        }else{
-            return -ans;
-        }
     }
 }
