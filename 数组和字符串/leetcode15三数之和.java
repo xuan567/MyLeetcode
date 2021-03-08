@@ -24,6 +24,11 @@ public class leetcode15三数之和 {
 
      */
 
+    //题解：将数组从小到大排序。
+    //如果第一个数字大于0，直接返回空list，将整个数组遍历一遍，遇到相同的跳过
+    // 定义双指针，L=i+1,R=len-1,找出所有加起来等于0的组合添加到lists中
+    //其中排除相同的字符，如果遇到相同的字符，L坐标++，R坐标--，遍历一遍直到L<R,
+
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         Arrays.sort(nums);
