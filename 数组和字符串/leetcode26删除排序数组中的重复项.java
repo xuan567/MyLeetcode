@@ -72,4 +72,22 @@ public class leetcode26删除排序数组中的重复项 {
     //遍历这个数组，因为是非递减的顺序表，下标i记录，j遍历，i=0，j=1，当nums[i]!=nums[j]，i++，j++，
     //当nums[i]==nums[j]时，i不变，j++，这样重复的元素不会被记录，最后返回Arrays.copyOf(nums,i+1)，
     //返回新数组的前i+1个元素，时间复杂度时O(n),空间复杂度是O(1);
+
+    public int removeDuplicates(int[] nums) {
+        //如果数组的长度等于0或1，没有重复的元素，直接返回n
+        //设置一个下表j，遍历数组，i从1开始，如果该元素和上一个元素不一样
+        //nums[j++]=nums[i]，如果不一样，则只有i++，j不变，实现在原地删除了
+        //重复元素，最后直接返回j；
+        int n=nums.length;
+        if(n==0 || n==1){
+            return n;
+        }
+        int j=1;
+        for(int i=1;i<n;i++){
+            if(nums[i]!=nums[i-1]){
+                nums[j++]=nums[i];
+            }
+        }
+        return j;
+    }
 }
