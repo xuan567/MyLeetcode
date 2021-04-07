@@ -26,36 +26,40 @@ public class leetcode31下一个排列 {
 
     * */
 
-    public void nextPermutation(int[] nums) {
-        int n = nums.length;
-        int i;
+    //1.希望下一个数比当前数大，所以需要将后面的‘大数’与前面的‘小数’交换，例如123456就变成123465
+    //2.还希望下一个数增加的幅度尽可能小：
+    //   1.在尽可能靠右的低位进行交换，需要从后向前找
+    //   2.将一个尽可能小的‘大数’与前面的‘小数’交换，如‘123465’ 应该换为 ‘123546’
+    //   3.将‘大数’换到前面后，需要将大数后面所有的数重置为升序，升序排列就是最小的排列
 
-        if(n==0 || n==1) {
-            return;
-        }else {
-            for (i = 1; i < n; i++) {
-                if (nums[i] < nums[i - 1]) {
-                    break;
-                }
-            }
-            if (i == n - 1) {
-                nums = reverse(nums);
-            }else{
-                int t = nums[i];
-                nums[i-1] = nums[i];
-                nums[i] = t;
-            }
-            return;
+    public void nextPermutation(int[] nums) {
+        int i = nums.length-2;
+        while(i>=0 && nums[i]>=nums[i+1]){
+            i--;
         }
+
+        if(i>=0){
+            int j = nums.length-1;
+            while(nums[j]<=nums[i] && j>i){
+                j--;
+            }
+            swap(nums,i,j);
+        }
+
+        reverse(nums,i+1);
     }
 
-    public int[] reverse(int[] nums){
-        int n = nums.length;
-        int[] nums1 = new int[n];
-        for(int i=n-1,j=0;i>=0;i--,j++){
-            nums1[j] = nums[i];
+    public void swap(int[] nums,int i,int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+    public void reverse(int[] nums,int i){
+        int j = nums.length-1;
+        for(;i<j;i++,j--){
+            swap(nums,i,j);
         }
-        return nums1;
     }
 
 }
