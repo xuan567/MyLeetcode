@@ -1,9 +1,6 @@
 package 回溯;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class leetcode46全排列 {
     /*
@@ -22,48 +19,41 @@ public class leetcode46全排列 {
     ]
         * */
 
-    public static void main(String[] args) {
-        int[] nums = {1,2,3};
-        List<List<Integer>> res = permute(nums);
-        System.out.println(res);
-//        for(int i=0;i<res.size();i++){
-//            System.out.println(res.get(i));
-//        }
-    }
+//    public static void main(String[] args) {
+//        int[] nums = {1,2,3};
+//        List<List<Integer>> res = permute(nums);
+//        System.out.println(res);
+////        for(int i=0;i<res.size();i++){
+////            System.out.println(res.get(i));
+////        }
+//    }
 
-    public static List<List<Integer>> permute(int[] nums) {
+    public  List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        Deque<Integer> path = new ArrayDeque<>();
         int len = nums.length;
         if(len==0){
             return res;
         }
-        dfs1(nums,0,len,res,path);
-        dfs2(nums,len-1,res,path);
+        boolean[] used = new boolean[len];
+        List<Integer> path = new ArrayList<>();
+        dfs(nums,len,0,res,used,path);
         return res;
     }
-    private static void dfs1(int[] nums,int begin,int len,List<List<Integer>> res,Deque<Integer> path){
-        if(begin==len-1){
+
+    private void dfs(int[] nums,int len,int depth,List<List<Integer>> res,boolean[] used,List<Integer> path){
+        if(depth==len){
             res.add(new ArrayList<>(path));
             return;
         }
-        path.addLast(nums[begin]);
-        for(int i=begin;i<len;i++){
-            dfs1(nums,i,len,res,path);
+        for(int i=0;i<len;i++){
+            if(!used[i]){
+                path.add(nums[i]);
+                used[i]=true;
+                dfs(nums,len,depth+1,res,used,path);
+                path.remove(path.size()-1);
+                used[i]=false;
+            }
         }
-        path.removeLast();
     }
 
-
-    private static void dfs2(int[] nums,int begin,List<List<Integer>> res,Deque<Integer> path){
-        if(begin<0){
-            res.add(new ArrayList<>(path));
-            return;
-        }
-        path.addLast(nums[begin]);
-        for(int i=begin;i>=0;i--){
-            dfs2(nums,i,res,path);
-        }
-        path.removeLast();
-    }
 }
