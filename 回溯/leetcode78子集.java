@@ -18,19 +18,20 @@ public class leetcode78子集 {
 
     * */
 
+    //解法：递归
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
-        dfs(nums,res,new ArrayList<>(),0,n);
+        dfs(0,n,nums,res,path);
         return res;
     }
 
-    private void dfs(int[] nums,List<List<Integer>> res , ArrayList<Integer> path,int begin, int n){
+    private void dfs(int begin,int len,int[] nums,List<List<Integer>> res,List<Integer> path){
         res.add(new ArrayList<>(path));
-        for(int i=begin;i<n;i++){
+        for(int i=begin;i<len;i++){
             path.add(nums[i]);
-            dfs(nums,res,path,i+1,n);
+            dfs(i+1,len,nums,res,path);
             path.remove(path.size()-1);
         }
     }
