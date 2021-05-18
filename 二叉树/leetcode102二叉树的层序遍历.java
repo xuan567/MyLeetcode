@@ -3,6 +3,9 @@ package 二叉树;
 import java.util.*;
 
 public class leetcode102二叉树的层序遍历 {
+
+    //stack.poll 获取并移除队列的头
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();
         List<List<Integer>> list = new ArrayList<>();
@@ -26,4 +29,5 @@ public class leetcode102二叉树的层序遍历 {
         }
         return list;
     }
+
 }
