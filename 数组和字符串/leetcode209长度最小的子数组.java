@@ -12,8 +12,8 @@ public class leetcode209长度最小的子数组 {
         解释：子数组 [4,3] 是该条件下的长度最小的子数组。*/
 
     public static void main(String[] args) {
-        int s=11;
-        int[] nums = {1,2,3,4,5};
+        int s=7;
+        int[] nums = {2,3,1,2,4,3};
         int x;
         x=minSubArrayLen1(s,nums);
         System.out.println(x);
@@ -56,5 +56,6 @@ public class leetcode209长度最小的子数组 {
         }
         return min==Integer.MAX_VALUE?0:min;
     }
+
 
 }
