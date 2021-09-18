@@ -1,4 +1,4 @@
-package 数组和字符串;
+package 动态规划;
 
 public class leetcode279完全平方数 {
     /*
