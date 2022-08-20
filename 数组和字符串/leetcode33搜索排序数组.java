@@ -1,5 +1,7 @@
 package 数组和字符串;
 
+import javax.lang.model.util.Elements;
+
 public class leetcode33搜索排序数组 {
 
     /*
@@ -39,23 +41,23 @@ public class leetcode33搜索排序数组 {
     //先根据nums[mid]和nums[lo]的关系判断mid是在左段还是右段，接下来再判断target是在mid的左边还是右边从而调整lo和hi
 
     public int search2(int[] nums, int target) {
-        int low = 0,height = nums.length-1,mid = 0;
-        while(low<=height){
-            mid = low + (height - low)/2;
-            if(nums[mid]==target){
+        int low = 0,high= nums.length;
+        while(low<high){
+            int mid = low + (high-low)/2;
+            if(target == nums[mid]){
                 return mid;
             }
             if(nums[mid] >= nums[low]){
-                if(target<nums[mid] && target>=nums[low]){
-                    height = mid-1;
-                }else{
-                    low = mid+1;
+                if(target >= nums[low] && target < nums[mid] ){
+                    high = mid-1;
+                }else {
+                    low = high+1;
                 }
             }else{
-                if(target>nums[mid] && target<=nums[height]){
+                if(target > nums[mid] && target<= nums[high]){
                     low = mid+1;
                 }else{
-                    height = mid-1;
+                    high = mid-1;
                 }
             }
         }
